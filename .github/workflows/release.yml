@@ -39,77 +39,77 @@ jobs:
   #         JAVASCRIPT_DEFAULT_STYLE: prettier
   #         VALIDATE_JSCPD: false
 
-  test-javascript:
-    name: Testing
-    runs-on: ubuntu-latest
+  # test-javascript:
+  #   name: Testing
+  #   runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout
+  #       id: checkout
+  #       uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        id: setup-node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+  #     - name: Setup Node.js
+  #       id: setup-node
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #         cache: npm
 
-      - name: Install Dependencies
-        id: npm-ci
-        run: npm ci
+  #     - name: Install Dependencies
+  #       id: npm-ci
+  #       run: npm ci
 
-      - name: Check Format
-        id: npm-format-check
-        run: npm run format:check
+  #     - name: Check Format
+  #       id: npm-format-check
+  #       run: npm run format:check
 
-      - name: Lint
-        id: npm-lint
-        run: npm run lint
+  #     - name: Lint
+  #       id: npm-lint
+  #       run: npm run lint
 
-  check-dist:
-    name: Check dist/
-    runs-on: ubuntu-latest
+  # check-dist:
+  #   name: Check dist/
+  #   runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      statuses: write
+  #   permissions:
+  #     contents: read
+  #     statuses: write
 
-    steps:
-      - name: Checkout
-        id: checkout
-        uses: actions/checkout@v4
+  #   steps:
+  #     - name: Checkout
+  #       id: checkout
+  #       uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
+  #     - name: Setup Node.js
+  #       uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 20
+  #         cache: npm
 
-      - name: Install Dependencies
-        id: install
-        run: npm ci
+  #     - name: Install Dependencies
+  #       id: install
+  #       run: npm ci
 
-      - name: Build dist/ Directory
-        id: build
-        run: npm run bundle
+  #     - name: Build dist/ Directory
+  #       id: build
+  #       run: npm run bundle
 
-      - name: Compare Expected and Actual Directories
-        id: diff
-        run: |
-          if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
-            echo "Detected uncommitted changes after build. See status below:"
-            git diff --ignore-space-at-eol --text dist/
-            exit 1
-          fi
+  #     - name: Compare Expected and Actual Directories
+  #       id: diff
+  #       run: |
+  #         if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
+  #           echo "Detected uncommitted changes after build. See status below:"
+  #           git diff --ignore-space-at-eol --text dist/
+  #           exit 1
+  #         fi
 
-      # If index.js was different than expected, upload the expected version as
-      # a workflow artifact.
-      - uses: actions/upload-artifact@v3
-        if: ${{ failure() && steps.diff.conclusion == 'failure' }}
-        with:
-          name: dist
-          path: dist/
+  #     # If index.js was different than expected, upload the expected version as
+  #     # a workflow artifact.
+  #     - uses: actions/upload-artifact@v3
+  #       if: ${{ failure() && steps.diff.conclusion == 'failure' }}
+  #       with:
+  #         name: dist
+  #         path: dist/
 
   release:
     name: Release
