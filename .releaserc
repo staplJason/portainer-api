@@ -1,6 +1,6 @@
 {
   "branches": ["main", {"name": "beta", "prerelease": true}],
-  "repositoryUrl": "https://github.com/staplJason/portainer-api",
+  "repositoryUrl": "https://github.com/staplJason/portainer-api.git",
   "plugins": [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator"
