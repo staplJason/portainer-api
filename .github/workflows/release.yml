@@ -119,7 +119,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Display Branch Information
-              run: git branch -avv
+        run: git branch -avv
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
