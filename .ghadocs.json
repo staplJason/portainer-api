@@ -1,0 +1,16 @@
+{
+    "paths": {
+      "action": "action.yml",
+      "readme": "README.md"
+    },
+    "show_logo": true,
+    "branding_svg_path":"https://raw.githubusercontent.com/feathericons/feather/main/icons/layers.svg",
+    "versioning": {
+      "enabled": true,
+      "override": "",
+      "prefix": "v",
+      "branch": "main"
+    },
+    "title_prefix": "GitHub Action: ",
+    "pretty": true
+  }
