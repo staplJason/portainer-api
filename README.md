@@ -4,7 +4,7 @@
 <!-- end branding -->
 <!-- start title -->
 
-# undefinedportainer-api
+# GitHub Action: portainer-api
 
 <!-- end title -->
 <!-- start badges -->
