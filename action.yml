@@ -1,0 +1,47 @@
+name: 'portainer-api'
+description: 'Github Action to work with the Portainer API'
+author: 'Jason Lake'
+runs:
+  using: node20
+  main: dist/index.js
+inputs:
+  portainer-url:
+    description: URL of the portainer API.
+    required: true
+  portainer-username:
+    description: Username to authenticate against the API.
+    required: true
+  portainer-password:
+    description: Password to authenticate against the API.
+    required: true
+  portainer-endpoint:
+    description: Portainer Endpoint Name.
+    required: false
+    default: "local"
+  stack-name:
+    description: Stack name
+    required: true
+  stack-file:
+    description: Location of the stack file (Relative from the root directory).
+    required: true
+  stack-env:
+    description: Environment injected into Stack (JSON Format).
+    required: false
+    default: "{}"
+  delete:
+    description: Option to delete a stack if exists before create.
+    required: false
+    default: ""
+  prune:
+    description: Remove missing/obsolete services from stack on update.
+    required: false
+    default: ""
+branding:
+  icon: layers
+  color: green
+
+
+# Define your outputs here.
+# outputs:
+#   time:
+#     description: 'Your output description here'

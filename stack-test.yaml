@@ -1,0 +1,15 @@
+version: "3"
+services:
+  whoaction-test-appi:
+    image: "traefik/whoami"
+    container_name: "whoaction-test-appi"
+    environment:
+      - WHOAMI_PORT_NUMBER=8080
+      - WHOAMI_NAME=whoaction-test-api
+    restart: unless-stopped
+    networks:
+     - deploystack_default
+
+networks:
+  deploystack_default:
+    external: true
