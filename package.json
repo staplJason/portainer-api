@@ -4,13 +4,9 @@
   "version": "0.0.0",
   "author": "",
   "private": true,
-  "homepage": "https://github.com/actions/javascript-action#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/javascript-action.git"
-  },
-  "bugs": {
-    "url": "https://github.com/actions/javascript-action/issues"
+    "url": "git+git@github.com:staplJason/portainer-api.git"
   },
   "keywords": [
     "GitHub",
