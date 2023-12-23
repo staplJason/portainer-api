@@ -120,8 +120,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Display Branch Information
         run: git branch -avv
-
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Verify Test Results
+        run: node coverage/checkTests.js      
       - name: Semantic Release
+        if: success() #if tests are passing above  then release (note tests are run locally with output currently)
         uses: cycjimmy/semantic-release-action@v4
         id: semantic
         with:
