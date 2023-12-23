@@ -125,7 +125,7 @@ jobs:
         with:
           node-version: '20'
       - name: Verify Test Results
-        run: node coverage/checkTests.js      
+        run: node checkTests.js      
       - name: Semantic Release
         if: success() #if tests are passing above  then release (note tests are run locally with output currently)
         uses: cycjimmy/semantic-release-action@v4
